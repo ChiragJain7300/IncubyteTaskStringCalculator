@@ -15,13 +15,29 @@ public class stringCalculator {
 
         else
         {
-
+            String[] numArr;
             String delimiter = ",";
             if (numbers.matches("//(.*)\n(.*)")) {
                 delimiter = Character.toString(numbers.charAt(2));
                 numbers = numbers.substring(4);
+                numArr = splitNumbers(numbers, delimiter + "|\n");
+            }else{
+                StringBuilder regex = new StringBuilder("\n,");
+                StringBuilder result = new StringBuilder();
+                if(numbers.startsWith("//"))
+                {
+                    regex.append(numbers,numbers.indexOf("//"),numbers.indexOf("\n"));
+                    result.append(numbers.substring(numbers.indexOf("\n")));
+                }
+                else{
+                    result.append(numbers);
+                }
+                numArr = result.toString().split("\\[" + regex + "\\]" );
+
             }
-            String[] numArr = splitNumbers(numbers, delimiter + "|\n");
+
+
+
 
             return sum(numArr);
         }
