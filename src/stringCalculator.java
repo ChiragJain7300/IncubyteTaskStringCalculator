@@ -9,10 +9,14 @@ public class stringCalculator {
         {
             return Integer.parseInt(numbers.trim());
         }
-        else if(numbers.trim().length()==3)
+        else if(numbers.trim().length()>1)
         {
-            String[] strArr = numbers.trim().split(",",2);
-            return (Integer.parseInt(strArr[0]) + Integer.parseInt(strArr[1]));
+            int sum=0;
+            String[] strArr = numbers.trim().split(",",0);
+            for (String s : strArr) {
+                sum += Integer.parseInt(s);
+            }
+            return sum;
         }
         else
             return 0;
