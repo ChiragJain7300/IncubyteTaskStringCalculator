@@ -12,7 +12,7 @@ public class stringCalculator {
         else if(numbers.trim().length()>1)
         {
             int sum=0;
-            String[] strArr = numbers.trim().split(",",0);
+            String[] strArr = numbers.trim().split("[,\n]",0);
             for (String s : strArr) {
                 sum += Integer.parseInt(s);
             }
@@ -22,11 +22,4 @@ public class stringCalculator {
             return 0;
 
     }
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        stringCalculator strCal1 = new stringCalculator();
-//        System.out.println("Enter");
-//        String str = sc.nextLine();
-//        System.out.println(strCal1.Add(str));
-//    }
 }
