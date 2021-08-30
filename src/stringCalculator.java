@@ -42,6 +42,10 @@ public class stringCalculator {
                 else
                     negString.append(",").append(s);
             }
+            if(Integer.parseInt(s)>1000)
+            {
+                continue;
+            }
             arrSum+= Integer.parseInt(s);
         }
         if (!negString.toString().equals("")) {
