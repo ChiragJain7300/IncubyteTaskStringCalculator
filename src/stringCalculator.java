@@ -16,25 +16,20 @@ public class stringCalculator {
         else
         {
             String[] numArr;
-            String delimiter = ",";
-            if (numbers.matches("//(.*)\n(.*)")) {
-                delimiter = Character.toString(numbers.charAt(2));
-                numbers = numbers.substring(4);
-                numArr = splitNumbers(numbers, delimiter + "|\n");
-            }else{
-                StringBuilder regex = new StringBuilder("\n,");
+            
+                StringBuilder regex = new StringBuilder("\\n,");
                 StringBuilder result = new StringBuilder();
                 if(numbers.startsWith("//"))
                 {
                     regex.append(numbers,numbers.indexOf("//"),numbers.indexOf("\n"));
-                    result.append(numbers.substring(numbers.indexOf("\n")));
+                    result.append(numbers.substring(numbers.indexOf("\n")).trim());
                 }
                 else{
                     result.append(numbers);
                 }
-                numArr = result.toString().split("\\[" + regex + "\\]" );
+                numArr = result.toString().split("[" + regex + "]" );
 
-            }
+            
 
 
 
@@ -70,8 +65,6 @@ public class stringCalculator {
         return arrSum;
     }
 
-    private String[] splitNumbers(String numbers, String delim) {
-        return numbers.split(delim);
-    }
+    
 
 }
