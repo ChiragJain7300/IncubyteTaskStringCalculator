@@ -22,6 +22,7 @@ public class stringCalculator {
                 numbers = numbers.substring(4);
             }
             String[] numArr = splitNumbers(numbers, delimiter + "|\n");
+
             return sum(numArr);
         }
 
@@ -29,9 +30,21 @@ public class stringCalculator {
     }
 
     private int sum(String[] arr) {
+
         int arrSum=0;
+        StringBuilder negString = new StringBuilder();
         for (String s : arr) {
-            arrSum += Integer.parseInt(s);
+
+            if (Integer.parseInt(s) < 0) {
+                if (negString.toString().equals(""))
+                    negString = new StringBuilder(s);
+                else
+                    negString.append(",").append(s);
+            }
+            arrSum+= Integer.parseInt(s);
+        }
+        if (!negString.toString().equals("")) {
+            throw new IllegalArgumentException("Negatives not allowed: " + negString);
         }
         return arrSum;
     }
@@ -39,4 +52,5 @@ public class stringCalculator {
     private String[] splitNumbers(String numbers, String delim) {
         return numbers.split(delim);
     }
+
 }
